@@ -1,0 +1,45 @@
+<h1>Users#show</h1>
+
+<%= @user.email %>
+<% if not_friends? %>
+<%= link_to "Add Friend", friendships_path(friend_id: @user), method: :post %>
+<% end %>
+<br>
+
+<h2> Friends </h2>
+<ul>
+	<% @user.friends.each do |f| %>
+	<li> 
+		<%= link_to f.email, f %>
+		<% if user_signed_in? && current_user == f%>
+		<%= link_to "Remove friend", friendship_path(id: f.id), method: :delete %>
+		<% end %>
+	</li>
+	<% end %>
+</ul>>
+
+<h3> Received Requests </h3>
+<ul>
+	<% @user.requested_friendships.each do |f| %>
+	<li> 
+		<%= link_to f.email, users_path(f) %>
+		<% if user_signed_in? %>
+		<%= link_to "Accept", friendship_path(id: f.id), method: "put" %>
+		<%= link_to "Decline", friendship_path(id: f.id), method: :delete %>
+		<% end %>
+
+	</li>
+	<% end %>
+</ul>>
+
+<h3> Sent Requests </h3>
+<ul>
+	<% @user.pending_friends.each do |f| %>
+	<li> 
+		<%= link_to f.email, users_path(f) %>
+	</li>
+	<% end %>
+</ul>>
+
+
+
