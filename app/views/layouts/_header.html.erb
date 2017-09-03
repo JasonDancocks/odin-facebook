@@ -1,5 +1,6 @@
 <nav>
 	<%= link_to "All users", users_path %>
+	<%= link_to "All posts", posts_path %>
 	<% if user_signed_in? %>
 	Signed in as <%= link_to current_user.email, current_user %>. Not you?
 	<%= link_to "Sign out", destroy_user_session_path, method: :delete %>
@@ -7,6 +8,8 @@
 	<% if current_user.requested_friendships.any? %>
 	<%= link_to "You have #{current_user.requested_friendships.count} friend request(s)", current_user %>
 	<% end %>
+
+	<%= link_to "New Post", new_post_path %>
 	
 	<% else %>
 

@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   
 
+  resources :posts
 	root to: "static_pages#home"
 	
   resources :friendships, only: [:create, :update, :destroy]

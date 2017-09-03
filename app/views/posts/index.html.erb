@@ -1,0 +1,5 @@
+<h1> All posts </h1>
+
+<% @posts.each do |p| %>
+<p><%= link_to p.title, p %> <%= link_to p.author, p.author %> </p>
+<% end %>
