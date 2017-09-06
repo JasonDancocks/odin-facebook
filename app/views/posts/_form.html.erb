@@ -1,4 +1,7 @@
-<%= form_for @post, method: :post do |f| %>
-<%= f.text_field :title %>
+<%= form_for @post do |f| %>
+<%= f.label :title %>
+<%= f.text_field :title %><br><br>
+<%= f.label :body %>
 <%= f.text_area :body %>
 <%= f.submit %>
+<% end %>

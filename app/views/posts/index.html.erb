@@ -1,5 +1,10 @@
-<h1> All posts </h1>
+<h1> Timeline </h1>
 
 <% @posts.each do |p| %>
-<p><%= link_to p.title, p %> <%= link_to p.author, p.author %> </p>
+<p><%= link_to p.title, p %> <%= link_to p.user.name, p.user %>
+<% if p.user == current_user %>
+	<%= link_to "Edit post", edit_post_path(p) %>
+	<% end %>
+	posted  <%= time_ago_in_words(p.time_posted) %> ago
+	 </p>
 <% end %>

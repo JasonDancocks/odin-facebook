@@ -41,10 +41,10 @@ class PostsController < ApplicationController
   def update
 
     if @post.update(post_params)
-      flash[:notice] = "Post created."
+      flash[:notice] = "Post updated."
       redirect_back fallback_location: root_url
     else
-      flash[:error] = "Unable to create post"
+      flash[:error] = "Unable to update post"
       redirect_back fallback_location: root_url
     end
     
