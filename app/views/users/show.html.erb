@@ -11,7 +11,7 @@
 	<% @user.friends.each do |f| %>
 	<li> 
 		<%= link_to f.email, f %>
-		<% if user_signed_in? && current_user == f%>
+		<% if current_user == @user %>
 		<%= link_to "Remove friend", friendship_path(id: f.id), method: :delete %>
 		<% end %>
 	</li>
@@ -23,7 +23,7 @@
 	<% @user.requested_friendships.each do |f| %>
 	<li> 
 		<%= link_to f.email, users_path(f) %>
-		<% if user_signed_in? %>
+		<% if current_user == @user %>
 		<%= link_to "Accept", friendship_path(id: f.id), method: "put" %>
 		<%= link_to "Decline", friendship_path(id: f.id), method: :delete %>
 		<% end %>
@@ -36,10 +36,23 @@
 <ul>
 	<% @user.pending_friends.each do |f| %>
 	<li> 
-		<%= link_to f.email, users_path(f) %>
+		<%= link_to f.email, f %>
 	</li>
 	<% end %>
 </ul>>
+
+<h4> Timeline </h4>
+<% @user.posts.each do |p| %>
+<p> 
+		<%= link_to p.title, p %> <br>
+		<%= p.preview %><br>
+
+<% if p.user == current_user %>
+	<%= link_to "Edit post", edit_post_path(p) %>
+	<% end %>
+	posted  <%= time_ago_in_words(p.time_posted) %> ago
+	 </p>
+<% end %>
 
 
 
