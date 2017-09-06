@@ -36,23 +36,23 @@
 <ul>
 	<% @user.pending_friends.each do |f| %>
 	<li> 
-		<%= link_to f.email, users_path(f) %>
+		<%= link_to f.email, f %>
 	</li>
 	<% end %>
 </ul>>
 
 <h4> Timeline </h4>
-<ul>
-	<% @user.posts.each do |p| %>
-	<li>
-		<ul>
-			<li> <%= link_to p.title, p %> </li>
-			<li> <%= p.body %> </li>
-			<br>
-		</ul>
-	</li>
+<% @user.posts.each do |p| %>
+<p> 
+		<%= link_to p.title, p %> <br>
+		<%= p.preview %><br>
+
+<% if p.user == current_user %>
+	<%= link_to "Edit post", edit_post_path(p) %>
 	<% end %>
-</ul>
+	posted  <%= time_ago_in_words(p.time_posted) %> ago
+	 </p>
+<% end %>
 
 
 

@@ -28,7 +28,7 @@ class PostsController < ApplicationController
 
     if @post.save
       flash[:notice] = "Post created."
-      redirect_back fallback_location: root_url
+      redirect_to root_url
     else
       flash[:error] = "Unable to create post"
       redirect_back fallback_location: root_url
@@ -42,7 +42,7 @@ class PostsController < ApplicationController
 
     if @post.update(post_params)
       flash[:notice] = "Post updated."
-      redirect_back fallback_location: root_url
+      redirect_to root_url
     else
       flash[:error] = "Unable to update post"
       redirect_back fallback_location: root_url

@@ -15,14 +15,6 @@ ActiveRecord::Schema.define(version: 20170903210058) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "friend_requests", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "user_id"
-    t.integer "has_accepted"
-    t.integer "requested_friend_id"
-  end
-
   create_table "friendships", force: :cascade do |t|
     t.integer "user_id"
     t.integer "friend_id"
@@ -52,9 +44,6 @@ ActiveRecord::Schema.define(version: 20170903210058) do
     t.inet "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "friend_request_id"
-    t.integer "sent_friend_request_id"
-    t.integer "received_friend_request_id"
     t.integer "post_id"
     t.string "name"
     t.index ["email"], name: "index_users_on_email", unique: true

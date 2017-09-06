@@ -1,3 +1,7 @@
 10.times do
-	user = User.create(email: Faker::Internet.email(Faker::GameOfThrones.character.gsub(/\s+/, ".")), password: "password")
+	@name = Faker::GameOfThrones.character
+	user = User.create(name: @name, email: Faker::Internet.email(@name.gsub(/\s+/, ".")), password: "password")
+	rand(1..5).times do 
+		user.posts.create(title: Faker::Overwatch.quote, body: Faker::GameOfThrones.city)
+	end
 end
