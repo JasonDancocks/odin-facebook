@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
-  
+  root to: "posts#index"
+
+  resources :likes, only: [:create, :destroy]
 
   resources :posts
 
-	root to: "posts#index"
+	
 	
   resources :friendships, only: [:create, :update, :destroy]
 
