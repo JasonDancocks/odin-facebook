@@ -2,12 +2,16 @@
 
 <% @posts.each do |p| %>
 <p> <%= link_to p.user.name, p.user %><br>
-		<%= link_to p.title, p %> <br>
-		<%= p.preview %><br>
+	<%= link_to p.title, p %> <br>
+	<%= p.preview %><br>
 
-<% if p.user == current_user %>
+	<% if p.user == current_user %>
 	<%= link_to "Edit post", edit_post_path(p) %>
 	<% end %>
 	posted  <%= time_ago_in_words(p.time_posted) %> ago
-	 </p>
+</p>
+<%= pluralize(p.fans.count, "person") %> like(s) this post <br>
+	<% p.fans.each do |f| %>
+	<%= link_to f.name, f %> likes this  <br>
+	<% end %>
 <% end %>

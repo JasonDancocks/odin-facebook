@@ -13,6 +13,9 @@ class User < ApplicationRecord
   has_many :requested_friendships, -> { where(friendships: { accepted: false}) }, through: :received_friendships, source: :user
   has_many :posts
 
+  has_many :likes
+  has_many :liked_posts, through: :likes, source: :post
+
   #calls all friends through "or" on database
   def friends
   	active_friends | received_friends
@@ -21,4 +24,11 @@ class User < ApplicationRecord
   def pending
   	pending_friends | requested_friendships
   end
+
+  def liked_post?(post)
+    return true if liked_posts.include?(post)
+  end
+
+
+
 end
