@@ -4,7 +4,7 @@
 	<%= link_to p.user.name, p.user %><br>
 	<%= link_to p.title, p %> <br>
 	<%= p.preview %><br>
-
+	<%= render "shared/like_dislike", post: p %>
 	<%= render "shared/edit_link", post: p %>
 	posted  <%= time_ago_in_words(p.time_posted) %> ago
 </p>
