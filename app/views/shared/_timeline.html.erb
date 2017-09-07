@@ -1,0 +1,13 @@
+<% posts.each do |p| %>
+<p> <%= link_to p.user.name, p.user %><br>
+	<%= link_to p.title, p %> <br>
+	<%= p.preview %><br>
+
+	<%= render "shared/edit_link", post: p %>
+	posted  <%= time_ago_in_words(p.time_posted) %> ago
+</p>
+
+	
+<%= render "shared/likes_comments", post: p %>
+	<%= render "shared/comment_form", post: p %>
+<% end %>

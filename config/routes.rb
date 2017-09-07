@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   resources :posts
 
+  resources :comments, only: [:create, :update, :destroy]
 	
 	
   resources :friendships, only: [:create, :update, :destroy]

@@ -4,12 +4,8 @@
 	<% @users.each do |user| %>
 	<% if user != current_user %>
 	<li>
-		
 		<%= link_to user.name, user %> 
-		<% if not_friends?(user) %>
-		<%= link_to "Add Friend", friendships_path(friend_id: user), method: :post %>
-		<% end %>
-		
+		<%= render "shared/add_friend", user: user %>
 	</li>
 	<% end %>
 	<% end %>

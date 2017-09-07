@@ -1,0 +1,4 @@
+	<% if not_friends?(user) %>
+		<%= link_to "Add Friend", friendships_path(friend_id: user), method: :post %>
+		<% end %>
+		

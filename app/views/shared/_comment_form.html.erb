@@ -1,0 +1,7 @@
+<%= form_tag(comments_path) do %>
+	<%= label_tag(:body, "Comment") %>
+	<%= text_field_tag(:body) %>
+	<%= hidden_field_tag(:post_id, post.id) %>
+	<%= submit_tag("Add Comment") %>
+ 
+	<% end %>

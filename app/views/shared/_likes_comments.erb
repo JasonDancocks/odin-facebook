@@ -1,0 +1,10 @@
+<%= pluralize(post.fans.count, "person") %> like(s) this post <br>
+	<% post.fans.each do |f| %>
+	<%= link_to f.name, f %> likes this  <br>
+	<% end %>
+	<% post.comments.each do |c| %>
+	<%= link_to c.author, c.user %>
+	<%= c.body %> 
+	<%= render "shared/edit_delete_comment" , comment: c %>
+	<br>
+	<% end %>
