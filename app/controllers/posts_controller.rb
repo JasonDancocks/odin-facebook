@@ -4,7 +4,15 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
+    @posts = []
+    friend_posts = Post.where("user_id IN (?)", current_user.friends)
+    friend_posts.each do |p|
+      @posts << p
+    end
+    current_user.posts.each do |p|
+      @posts << p
+    end
+    @posts
   end
 
   # GET /posts/1

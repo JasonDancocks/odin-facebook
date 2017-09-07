@@ -1,6 +1,8 @@
 <h1> <%= @post.title %> </h1>
-
+<%= link_to(@post.user.name, @post.user) %>
+<br>
 <%= @post.body %>
+<br>
 <%= render "shared/edit_link", post: @post %>
 <%= render "shared/like_dislike", post: @post %>
 <%= render "shared/likes_comments", post: @post %>
