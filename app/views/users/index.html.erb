@@ -4,6 +4,7 @@
 	<% @users.each do |user| %>
 	<% if user != current_user %>
 	<li>
+		<%= profile_pic_for(user) %>
 		<%= link_to user.name, user %> 
 		<%= render "shared/add_friend", user: user %>
 	</li>
