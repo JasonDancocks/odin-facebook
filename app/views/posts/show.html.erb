@@ -1,20 +1,7 @@
 <h1> <%= @post.title %> </h1>
 
 <%= @post.body %>
-
-<% if @post.user == current_user %>
-	<%= link_to "Edit post", edit_post_path(@post) %>
-	<% elsif current_user.liked_post?(@post) %>
-
-		<%= link_to "Remove Like", like_path(user_id: current_user.id, post_id: @post.id), method: :delete %>
-	<% else %>
-
-	 <%= link_to "Like Post", likes_path(post_id: @post), method: :post %>
-	 <% end %>
-	 <br>
-
-	 <%= pluralize(@post.fans.count, "person") %> like(s) this post <br>
-	<% @post.fans.each do |f| %>
-	<%= link_to f.name, f %> likes this  <br>
-	<% end %>
-
+<%= render "shared/edit_link", post: @post %>
+<%= render "shared/like_dislike", post: @post %>
+<%= render "shared/likes_comments", post: @post %>
+<%= render "shared/comment_form", post: @post %>
