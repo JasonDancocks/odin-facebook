@@ -54,10 +54,7 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-gem "faker" 
-gem "devise"
-gem "omniauth-facebook"
-gem "figaro"
+
 
 group :test do
   gem 'rails-controller-testing'
@@ -66,3 +63,9 @@ group :test do
   gem 'guard-minitest'
   
 end
+
+gem "faker" 
+gem "devise"
+gem "omniauth-facebook"
+gem "figaro"
+gem "sendgrid-ruby"
